@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.imoon.grpc";
+option java_outer_classname = "HelloWorldProto";
+
+import public "google/protobuf/timestamp.proto";
+import public "google/protobuf/empty.proto";
+
+// The call service definition.
+service CallGrpcService {
+  // call grpc.
+  rpc Call (CallRequest) returns (CallReply) {
+  }
+
+}
+
+message CallRequest {
+  string name = 1;
+  int32 num = 2;
+}
+
+message CallReply {
+  string reply = 1;
+}
+

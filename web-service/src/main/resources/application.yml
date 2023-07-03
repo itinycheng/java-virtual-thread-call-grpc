@@ -1,0 +1,17 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 1000
+      min-spare: 30
+  port: 9106
+
+grpc:
+  server:
+    port: 9898
+  client:
+    local-grpc-server:
+      address: static://127.0.0.1:9898
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
