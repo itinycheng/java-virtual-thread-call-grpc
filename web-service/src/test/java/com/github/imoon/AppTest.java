@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Unit test for simple App.
@@ -37,10 +36,10 @@ public class AppTest {
     }
 
     @Test
-    public void virtualThread() throws Exception {
+    public void virtualThread() {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             for (int i = 0; i < 500_000; i++) {
-                int finalI = i;
+                var finalI = i;
                 executor.submit(() -> {
                     try {
                         var reply = stub.call(CallRequest.newBuilder().setName("moon").setNum(finalI).build());
@@ -50,9 +49,6 @@ public class AppTest {
                     }
                 });
             }
-
-            var bool = executor.awaitTermination(1, TimeUnit.MINUTES);
-            System.out.println(bool);
         }
 
     }

@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 
 
 /**
- * Job processing grpc client.
+ * grpc client.
  */
 @Slf4j
 @Service

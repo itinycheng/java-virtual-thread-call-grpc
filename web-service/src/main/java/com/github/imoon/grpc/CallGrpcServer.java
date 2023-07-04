@@ -7,7 +7,7 @@ import net.devh.boot.grpc.server.service.GrpcService;
 import java.time.Duration;
 
 /**
- * Job process grpc service.
+ * call grpc service.
  */
 @Slf4j
 @GrpcService
@@ -24,7 +24,7 @@ public class CallGrpcServer extends CallGrpcServiceGrpc.CallGrpcServiceImplBase 
         }
 
         CallReply reply = CallReply.newBuilder()
-                .setReply("hello " + request.getName())
+                .setReply(String.format("hello %s, num:  %d", request.getName(), request.getNum()))
                 .build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
